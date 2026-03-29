@@ -1,9 +1,10 @@
 import csv
 
+#TASK 4 Guarda los datos en un archivo
 def guardar_csv(inventario, ruta):
-    """TASK 4: Guarda los datos en un archivo."""
+    
     if not inventario:
-        print("⚠️ Inventario vacío, nada que guardar.")
+        print("Inventario vacío, nada que guardar.")
         return
 
     try:
@@ -11,12 +12,14 @@ def guardar_csv(inventario, ruta):
             escritor = csv.DictWriter(f, fieldnames=['nombre', 'precio', 'cantidad'])
             escritor.writeheader()
             escritor.writerows(inventario)
-            print(f"✅ Guardado en: {ruta}")
+            print(f" Guardado en: {ruta}")
     except Exception as e:
-        print(f"❌ Error al escribir archivo: {e}")
+        print(f"Error al escribir archivo: {e}")
+
+#TASK 5 Carga el cvs
 
 def cargar_csv(ruta):
-    """TASK 5: Carga y valida filas."""
+   
     datos_nuevos = []
     errores = 0
     try:
@@ -34,5 +37,5 @@ def cargar_csv(ruta):
                     errores += 1
         return datos_nuevos, errores
     except FileNotFoundError:
-        print("❌ El archivo no existe.")
+        print(" El archivo no existe.")
         return [], 0
